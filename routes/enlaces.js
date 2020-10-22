@@ -3,8 +3,8 @@ const router = express.Router();
 const {
   nuevoEnlace,
   obtenerEnlace,
+  todosEnlaces,
 } = require("./../controllers/enlacesController");
-const { eliminarArchivo } = require("./../controllers/archivosController");
 const { check } = require("express-validator");
 const auth = require("./../middleware/auth");
 
@@ -18,6 +18,8 @@ router.post(
   nuevoEnlace
 );
 
-router.get("/:url", obtenerEnlace, eliminarArchivo);
+router.get('/', todosEnlaces)
+
+router.get("/:url", obtenerEnlace);
 
 module.exports = router;

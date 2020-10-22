@@ -3,11 +3,12 @@ const router = express.Router();
 const {
   subirArchivo,
   eliminarArchivo,
+  descargar
 } = require("./../controllers/archivosController");
 const auth = require("./../middleware/auth");
 
 router.post("/", auth, subirArchivo);
 
-router.delete("/:id", eliminarArchivo);
+router.get("/:archivo", descargar, eliminarArchivo);
 
 module.exports = router;
